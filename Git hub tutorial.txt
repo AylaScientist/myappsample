@@ -136,4 +136,8 @@ git commit -m 'Added readme.md'
 # now push it to github
 git push 
 
-You can get it by cloning it
+#You can get it by cloning it
+git clone https://github.com/AylaScientist/myappsample.git
+
+# If ypou have more users you just type: 
+git pull #your files will be up to date
