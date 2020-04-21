@@ -1,0 +1,139 @@
+## Tutorial for git hub ##
+##########################
+
+https://www.youtube.com/watch?v=SWYqp7iY_Tc&t=768s
+
+# Type from the folder where your application will be developed:
+touch index.html #you can already open this html file in atom and edit it for head, title, body...
+touch app.js
+git init #Initialized emptu it repository in ./.git
+git config --global user.name 'Aurora' 
+git config --global user.email 'ayla.bcn@gmail.com'
+git add index.html
+git status #It tells you the changes to be committed
+git rm --cached index.html
+git status #Says that you need to add the files of the folder to have them committed
+git add . #Adds everything
+
+# You need to add everything again at every moment that you modify the files of the app, in the folder
+
+# When we are finished we commit
+
+git commit # Opens an editor that you need to edit with the insert mode by clicking i
+
+# Remove the # from the lines to uncoment. In this case you must do it for 'Initial commit'
+# Result:
+[master (root-commit) dfbb61f]  Initial commit
+ 2 files changed, 11 insertions(+)
+ create mode 100644 app.js
+ create mode 100644 index.html
+
+
+# Says that the files have been changed and now they are on the branch
+
+
+# Now lets edit the app.js file (see it in the atom editor)
+# If we ask for the status of the git again it will say that the modificaitons of the file app.js aren't committed yet.
+
+git add .
+git commit -m 'Changed app.js' # Explaining the modifications of this committement
+
+[master 77c9d06] Changed app.js
+ 1 file changed, 1 insertion(+)
+
+## How to manage files that you don't want to include in the git:
+
+touch .gitignore # make a list of the files to ignore
+touch log.txt # This will be the file to ignore, for example incuding tht error logs. You edit it from the atom editor
+
+# This can also work for directories:
+mkdir dir1
+mkdir dir1
+cd dir1
+touch app1.js
+cd ../dir2
+touch app2.js
+cd ..
+
+# now edit the app files with atom 
+
+# After filling the app2 files, go to .gitignore and add the directories in the list like 
+/dir2 # to avoid including all the directory in the committement
+
+# you can use regex in .gitignore
+
+
+## How to create a branch:
+git branch mybranch # now you work in mybranch branch
+git branch login # now you work in the login branch
+git commit -m 'Adding logn branch and example branch'
+
+
+# Now we can switch to the login, or the example branch as follows
+git checkout login
+
+
+## Let's add some login possibilities: from the login branch
+touch login.html
+
+# Edit this new file from atom and in index.html, in the body, add a line that says 'Login form'. Finally add all the files again and commit:
+git add .
+git commit -m 'Add login form'
+
+
+# To go back to the master branch you must type:
+git checkout master
+
+
+
+## Merge branches:
+
+# Back to the master branch, the login line that we added to the file index.html is not there anymore and the same for the file login.hmtl, it is not there. We need to merge branches to finally end the modifications:
+
+git merge login # This opens an editor again. In this editor, after the first line that is a command, add an explanation about the changes made in the branch
+
+# Result:
+Merge made by the 'recursive' strategy.
+ index.html | 1 +
+ login.html | 1 +
+ 2 files changed, 2 insertions(+)
+ create mode 100644 login.html
+
+
+
+## Now its the time to log in github :)
+
+# Create a new repository called 'myappsample' and make it public
+# add our repository as a remote repository:
+git remote # shows nothing. We need to add the repository
+git remote add origin https://github.com/AylaScientist/myappsample.git
+git remote # now it shows origin
+
+Once we have the origin there, we push the repository
+git push -u origin master
+
+# Result:
+Username for 'https://github.com': AylaScientist
+Password for 'https://AylaScientist@github.com': 
+Counting objects: 19, done.
+Delta compression using up to 12 threads.
+Compressing objects: 100% (13/13), done.
+Writing objects: 100% (19/19), 1.72 KiB | 441.00 KiB/s, done.
+Total 19 (delta 4), reused 0 (delta 0)
+remote: Resolving deltas: 100% (4/4), done.
+To https://github.com/AylaScientist/myappsample.git
+   f56ea1c..86c5fd4  master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+
+
+# Now when you reload the webpage of the git, the files are there.
+
+# You should add a readme.md (markdown) file to get the people to understand about the repository
+touch README.md
+# edit it in atom 
+git add .
+git commit -m 'Added readme.md'
+# now push it to github
+git push 
+
+You can get it by cloning it
